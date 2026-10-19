@@ -1,0 +1,21 @@
+<?php
+$mod_strings = array(
+    'LBL_MODULE_NAME' => 'Deal Reviews',
+    'LBL_MODULE_TITLE' => 'Deal Reviews',
+    'LBL_MODULE_ID' => 'Deal Reviews',
+    'LBL_OBJECT_NAME' => 'Deal Review',
+    'LBL_HOMEPAGE_TITLE' => 'My Deal Reviews',
+    'LBL_LIST_FORM_TITLE' => 'Deal Review List',
+    'LBL_SEARCH_FORM_TITLE' => 'Search Deal Reviews',
+    'LNK_NEW_RECORD' => 'Create Deal Review',
+    'LNK_LIST' => 'View Deal Reviews',
+    'LBL_NAME' => 'Review Name',
+    'LBL_LIST_NAME' => 'Review Name',
+    'LBL_OPPORTUNITY' => 'Opportunity',
+    'LBL_OPPORTUNITY_ID' => 'Opportunity Id',
+    'LBL_REVIEW_STATUS' => 'Review Status',
+    'LBL_RISK_LEVEL' => 'Risk Level',
+    'LBL_DISCOUNT_PERCENT' => 'Discount %',
+    'LBL_REVIEWER_NOTES' => 'Reviewer Notes',
+    'LBL_DEFAULT_PANEL' => 'Review',
+);

@@ -1,0 +1,32 @@
+{
+  "name": "crm-sync-hub",
+  "version": "1.0.0",
+  "description": "Bi-directional sync of Leads, Accounts and Opportunities between SugarCRM (SuiteCRM) and Salesforce",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "start": "node --env-file=../.env src/index.ts",
+    "dev": "node --env-file=../.env --watch src/index.ts",
+    "sync": "node --env-file=../.env scripts/run-sync.ts",
+    "setup:salesforce": "node --env-file=../.env scripts/setup-salesforce.ts",
+    "setup:suitecrm": "node --env-file=../.env scripts/setup-suitecrm.ts",
+    "seed": "node --env-file=../.env scripts/seed.ts",
+    "check": "node --env-file=../.env scripts/check-connections.ts",
+    "verify": "node --env-file=../.env scripts/verify-e2e.ts",
+    "test": "node --test \"test/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongodb": "^7.7.0",
+    "node-cron": "^4.6.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.4",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,51 @@
+# Local infrastructure for the CRM Sync Hub.
+# SuiteCRM (open-source SugarCRM fork) + its MariaDB, and MongoDB for the sync hub.
+# Credentials come from the .env file next to this file.
+
+services:
+  mariadb:
+    image: bitnamilegacy/mariadb:latest
+    container_name: crm-mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: ${SUITE_DB_ROOT_PASSWORD}
+      MARIADB_USER: suitecrm
+      MARIADB_PASSWORD: ${SUITE_DB_PASSWORD}
+      MARIADB_DATABASE: suitecrm
+    volumes:
+      - mariadb_data:/bitnami/mariadb
+    restart: unless-stopped
+
+  suitecrm:
+    image: bitnamilegacy/suitecrm:latest
+    container_name: crm-suitecrm
+    depends_on:
+      - mariadb
+    ports:
+      - "8081:8080"
+    environment:
+      SUITECRM_DATABASE_HOST: mariadb
+      SUITECRM_DATABASE_PORT_NUMBER: 3306
+      SUITECRM_DATABASE_USER: suitecrm
+      SUITECRM_DATABASE_PASSWORD: ${SUITE_DB_PASSWORD}
+      SUITECRM_DATABASE_NAME: suitecrm
+      SUITECRM_USERNAME: ${SUGAR_USERNAME}
+      SUITECRM_PASSWORD: ${SUGAR_PASSWORD}
+      SUITECRM_EMAIL: admin@example.com
+      SUITECRM_HOST: localhost:8081
+    volumes:
+      - suitecrm_data:/bitnami/suitecrm
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:7
+    container_name: crm-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+volumes:
+  mariadb_data:
+  suitecrm_data:
+  mongo_data:
